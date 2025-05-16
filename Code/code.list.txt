@@ -1,1 +1,11 @@
+# Step 1: Sequencing Data Processing
+# This step includes quality control, read alignment to a reference genome, filtering of raw sequencing reads, and genotyping.
 
+# Step 2: Generating Data Matrix
+# In this step, we construct data matrices representing genetic distances, geographic distances, and temporal distances between samples.
+
+# Step 3: Epidemiological Analysis
+# This includes analyses such as k13 genotype characterization, relationships between genetic distances, geographic distances and temporal distances, and correlation studies.
+
+# Step 4: Generating Individual Figures
+# Visualization of analytical results using custom plots generated in R.
