@@ -34,7 +34,7 @@ Correlogram analysis of pair-wise parasite relatedness across space and time.
 Analyzes the impact of Mass Drug Administration on parasite population structure and diversity, using pre- and post-MDA datasets.
 
 # Data
-#########  genetic distance (1-IBD proportion)
+#  genetic distance (1-IBD proportion)
 > dim(dist_matrix)
 [1] 1726 1726
 > dist_matrix[1:5,1:5]
@@ -45,7 +45,7 @@ METF.HRP.13      1.000       0.982       0.000       0.988       0.960
 METF.HRP.14      1.000       0.969       0.988       0.000       0.989
 METF.HRP.15      0.913       0.940       0.960       0.989       0.000
 
-#########  geographic distance (km) 
+#  geographic distance (km) 
 > dim(geo_dist)
 [1] 1726 1726
 > geo_dist[1:5,1:5]
@@ -56,7 +56,7 @@ METF.HRP.13      27.29       23.13        0.00       46.03       28.26
 METF.HRP.14      19.02       25.52       46.03        0.00       74.17
 METF.HRP.15      55.54       51.06       28.26       74.17        0.00
 
-#########  temporal distance (days)
+#  temporal distance (days)
 > dim(dis.temporal)
 [1] 1726 1726
 > dis.temporal[1:5,1:5]
