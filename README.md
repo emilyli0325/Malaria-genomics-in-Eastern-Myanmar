@@ -35,5 +35,7 @@ Analyzes the impact of Mass Drug Administration on parasite population structure
 
 # Data
 genetic distance (1-IBD proportion)
+
 geographic distance (km) 
+
 temporal distance (days)
