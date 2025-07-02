@@ -40,4 +40,4 @@ geographic distance (km)
 
 temporal distance (days)
 
-# DOI: 10.5281/zenodo.15791463
+# [DOI: 10.5281/zenodo.15791463](https://doi.org/10.5281/zenodo.15791462)
