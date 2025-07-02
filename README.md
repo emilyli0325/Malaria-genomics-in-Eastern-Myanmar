@@ -39,3 +39,5 @@ genetic distance (1-IBD proportion)
 geographic distance (km) 
 
 temporal distance (days)
+
+# DOI: 10.5281/zenodo.15791463
