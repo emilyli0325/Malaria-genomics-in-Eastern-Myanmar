@@ -33,6 +33,10 @@ Correlogram analysis of pair-wise parasite relatedness across space and time.
 8. MDA.impact.R
 Analyzes the impact of Mass Drug Administration on parasite population structure and diversity, using pre- and post-MDA datasets.
 
+9. Updated Fws analysis
+This is an R implementation of the Fws calculation, adapted from the Python version used in the Pf8 dataset (www.malariagen.net/data_package/open-dataset-plasmodium-falciparum-v80/).
+
+
 # Data
 genetic distance (1-IBD proportion)
 
