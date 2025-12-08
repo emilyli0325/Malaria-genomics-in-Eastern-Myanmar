@@ -195,7 +195,7 @@ ncol = 3, nrow = 4)
 dev.off()
 
 ##########################################################################################
-# 4. R561 outbreak: Plot maps showing R561H clone (in yellow) vs all others, across time. This should show how R561H clone emerges, because all other haplotypes have been eliminated.
+# R561 outbreak: Plot maps showing R561H clone (in yellow) vs all others, across time. This should show how R561H clone emerges, because all other haplotypes have been eliminated.
 R561H.info <- read.csv("R561H.by.year.csv", header=T, sep=",")
 
 R561H.info.2016 <- R561H.info[R561H.info$Year %in% c("2016"),]
@@ -286,3 +286,4 @@ p.2016,p.2017,p.2018,p.2019,p.2020,
 ncol = 3, nrow = 4)
  
 dev.off()
+
