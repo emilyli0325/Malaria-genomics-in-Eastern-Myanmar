@@ -142,12 +142,10 @@ java -jar /master/xli/software/GATK/GenomeAnalysisTK.jar \
     -tranchesFile recalibrate_INDEL.tranches \
     -o Myan.allMETF.whole.diploid.INDEL.VQSR.vcf 
 
-
 # filter VQSLOD >0
 export PATH=$PATH:/master/xli/software/FreeBayes/vcflib/bin
 vcffilter -f "VQSLOD > 0" Myan.allMETF.whole.diploid.SNP.VQSR.vcf > Myan.allMETF.whole.diploid.SNP.VQSLOD0.vcf
 vcffilter -f "VQSLOD > 0" Myan.allMETF.whole.diploid.INDEL.VQSR.vcf  > Myan.allMETF.whole.diploid.INDEL.VQSLOD0.vcf	
-
 
 ## select core genome loci
 # SNP
@@ -166,72 +164,6 @@ java -Xmx50g -Djava.io.tmpdir=/master/xli/Myan.2021.allMETF/temp -jar /master/xl
 -V Myan.allMETF.whole.diploid.INDEL.VQSLOD0.vcf	 \
 -selectType INDEL -o Myan.allMETF.core.diploid.INDEL.VQSLOD0.vcf
 
-grep  -c -v "^#" Myan.allMETF.core.diploid.INDEL.VQSLOD0.vcf
-
-### count sample GT ratio - genotype rate in Table S1
-/data/infectious/malaria_XUE/sWGA/Thai_sample/Sanger.Thai.2018/Genotype.ploidy2/filter_missing_ind.sh Myan.allMETF.core.diploid.SNP.VQSLOD0.vcf SNP.lowSamp   
-# generate SNP.lowSamp.imiss
-The 85% cutoff would be 0.13684 : All individuals with more than 85.0% missing data will be removed.
-After filtering, kept 1953 out of 2270 Individuals # remove 317 samples
-After filtering, kept 748268 out of a possible 748268 Sites
-
-
 ####################################################################################################
-###############     Fws analysis     ###############################################################
-# biallelic
-java -jar /master/xli/software/GATK/GenomeAnalysisTK.jar \
--T SelectVariants \
--R /master/xli/Index/Pfal32_GATK_index/PlasmoDB-32_Pfalciparum3D7_Genome.fasta \
--L /master/xli/Index/Known_sites/Core_Genome.intervals \
---removeUnusedAlternates \
---excludeFiltered \
---excludeNonVariants \
---restrictAllelesTo BIALLELIC \
--V SNP.lowSamp.recode.vcf \
--o Myan.core.SNP.di.biallelic-forFWS.vcf
+###############     Fws analysis  see code 9   ###############################################################
 
-export PATH=$PATH:/master/xli/software/FreeBayes/vcflib/bin
-vcffilter -f "QD > 2.0 & FS < 60.0 & SOR < 3.0" -g "DP > 10 & GQ > 90" Myan.core.SNP.di.biallelic-forFWS.vcf  > Myan.core.SNP.di.biallelic.hardfilter-forFWS.vcf
-
-### remove low coverage samples 
-/data/infectious/malaria_XUE/sWGA/Thai_sample/Sanger.Thai.2018/Genotype.ploidy2/filter_missing_ind.sh Myan.core.SNP.di.biallelic.GT0.5.maf0.05-forFWS.recode.vcf Myan.core.SNP.di.biallelic.GT0.5.maf0.05-forFWS.lowSamp   
-
-All individuals with more than 80.0% missing data will be removed. 
-After filtering, kept 1927 out of 1953 Individuals
-
-
-### MOI in R
-library(moimix)
-library(SeqArray)
-
-setwd("C:/Users/xli.TXBIOMED/Dropbox (TX Biomed)/Emily/3.Myan/4.final.Myan.2021/2.FWS")
-
-# Converting a VCF to GDS format
-seqVCF2GDS("Myan.core.SNP.di.biallelic.GT0.5.maf0.05-forFWS.lowSamp.recode.vcf", "Myan.gds")
-my_vcf <-seqOpen("Myan.gds")
-seqSummary(my_vcf)
-
-###  load data
-isolates <- my_vcf
-seqSummary(isolates)
-sample.id <- seqGetData(isolates, "sample.id")
-coords <- getCoordinates(isolates)
-head(coords)
-
-# Estimating the BAF matrix
-isolate_baf <- bafMatrix(isolates)
-class(isolate_baf)
-str(isolate_baf)
-plot(isolate_baf, "MP0001/")
-
-# fws
-fws_all <- getFws(isolates)
-write.csv(fws_all, "Myan.FWS.csv")
-
-FWS <- read.csv("Myan.FWS.csv", header=TRUE, sep=",", check.names=FALSE)
-
-for(i in 1:1927){ 
-png(paste(round(FWS[i,2],2),FWS[i,3],"png",sep="."), 1000, 500)
-plot(isolate_baf, FWS[i,1])
-dev.off()
-}
