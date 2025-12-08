@@ -7,8 +7,8 @@ library(geosphere)
 
 #########################################################################################################
 #########################################################################################################
-setwd("C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/New.analysis.2024/5.time.and.relatedness")
-village.info <- read.csv("C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/New.analysis.2024/3.Pie.plot/Sample.by.HCPC.csv", header=T, sep=",")
+setwd("./5.time.and.relatedness")
+village.info <- read.csv("./Sample.by.HCPC.csv", header=T, sep=",")
 
 IBD.dis <- read.table("IBD.dis.date.village.txt",sep="\t",row.names=1)
 
@@ -220,3 +220,4 @@ ggarrange(
 p.IBD.45,p.mean.IBD,p.IBD.45.raw, 
           ncol = 1, nrow = 3)
 dev.off()
+
