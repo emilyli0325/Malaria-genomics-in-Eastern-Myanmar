@@ -1,6 +1,6 @@
 ############################################################################
 ### 
-setwd("C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/New.analysis.2024/7.Correlograms")
+setwd("./7.Correlograms")
 
 ##### get data
 # Load necessary libraries
@@ -9,8 +9,8 @@ library(geosphere)
 library(adegenet)
 library(spdep)
 
-load('C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/New.analysis.2024/5.time.and.relatedness/Mantel.individual.RData')
-seq.info <- read.csv("C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/Figure5_location/location/sample.info.csv", header=T, sep=",")
+load('./Mantel.individual.RData')
+seq.info <- read.csv("./sample.info.csv", header=T, sep=",")
 
 #########  genetic distance (1-IBD proportion)
 > dim(prop.dist)
@@ -215,3 +215,4 @@ ggarrange(
 p.corr_dis_geo, p.corr_dis_time,
           ncol = 1, nrow = 2)
 dev.off()
+
