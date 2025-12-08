@@ -1,10 +1,10 @@
 ##################################################################################################
 library("ggplot2")
 library("ggpubr")
-setwd("C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/New.analysis.2024/8.MDA")
+setwd("./8.MDA")
 
 ##################################################################################################
-load('C:/Users/xli/TX Biomed Dropbox/Xue Li/Emily/3.Myan/4.final.Myan.2023/New.analysis.2024/5.time.and.relatedness/Mantel.individual.RData')
+load('./Mantel.individual.RData')
 > dim(dat)
 [1] 1726 1726
 > dat[1:5,1:5]
@@ -238,7 +238,7 @@ t.test(A,B)
         Welch Two Sample t-test
 
 data:  A and B
-t = 3.1673, df = 9.5053, p-value = 0.01067 # this number in final plot
+t = 3.1673, df = 9.5053, p-value = 0.01067 
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  0.03658977 0.21443378
@@ -281,3 +281,4 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
 mean of x mean of y 
 0.2046743 0.0279140 
+
