@@ -33,6 +33,7 @@ Analyzes the impact of Mass Drug Administration on parasite population structure
 9. Updated Fws analysis
 This is an R implementation of the Fws calculation, adapted from the Python version used in the Pf8 dataset (www.malariagen.net/data_package/open-dataset-plasmodium-falciparum-v80/).
 
+10. pfhrp2/3 deletion analysis
 
 # Data
 genetic distance (1-IBD proportion)
